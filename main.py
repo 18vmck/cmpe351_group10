@@ -1,7 +1,9 @@
 import csv
+import hashlib
 import collections
 from itertools import chain
 import hashlib
+import numpy as np
 import pandas as pd
 
 csv_data = r'final_mfrc_data.csv'
@@ -9,6 +11,8 @@ read_data = pd.read_csv(csv_data, header=0, names=["text","subreddit","bucket","
 read_data.head()
 
 '''
+Made faster implementation of the code below 
+
 ######preprocessing steps to isolate data we need#########
 list_words = []
 for row in read_data["annotation"]:
@@ -19,8 +23,6 @@ for row in read_data["annotation"]:
 unique_words = set(flat_list)
 print(collections.Counter(flat_list)) ###visualizaion
 '''
-
-# Faster implementation of the above code #
 
 # Get the unique words
 annotator_data = [{'annotator': row[0], 'annotation': row[1]} for row in read_data[['annotator', 'annotation']].values]
@@ -40,9 +42,6 @@ for row in read_data["text"]:
 read_data.insert(0,"id", hashes)
 print(read_data.head(100))
 
-
-
-#print(unique_words)
 
 
 
