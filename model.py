@@ -6,7 +6,7 @@ from transformers import DistilBertTokenizer, DistilBertForSequenceClassificatio
 tokenizer = DistilBertTokenizer.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
 model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
 
-inputs = tokenizer("Hello, my dog is cute", return_tensors="pt")
+inputs = tokenizer("You are a cock", return_tensors="pt")
 with torch.no_grad():
     logits = model(**inputs).logits
 
