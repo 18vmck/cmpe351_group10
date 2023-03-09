@@ -5,7 +5,6 @@ from itertools import chain
 import numpy as np
 
 import pandas as pd
-import tensorflow as tf
 
 csv_data = r'final_mfrc_data.csv'
 read_data = pd.read_csv(csv_data, header=0, names=["text","subreddit","bucket","annotator","annotation","confidence"])
