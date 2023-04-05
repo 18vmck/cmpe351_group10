@@ -63,10 +63,12 @@ class Preprocessing:
         tf_reviews = tf_idf.fit_transform(cleaned_reviews)
 
         feature_names = tf_idf.get_feature_names()
-        print("Hello friend!")
-        dense = tf_reviews.todense()
-        denselist = dense.tolist()
-        df_TF_IDF = pd.DataFrame(tf_reviews.todense().tolist(), columns=feature_names)
+        
+#         dense = tf_reviews.todense()
+#         denselist = dense.tolist()
+#         df_TF_IDF = pd.DataFrame(denselist, columns=feature_names)
+        
+        df_TF_IDF = pd.DataFrame.sparse.from_spmatrix(tf_reviews, columns=feature_names)
         
         missed_tfidfW = list((set(vocabulary).difference(feature_names)))    
         return df_TF_IDF, missed_tfidfW
