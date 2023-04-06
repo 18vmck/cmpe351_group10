@@ -134,19 +134,14 @@ class Classify:
         model.add(Flatten())
         model.add(Dense(100))
         model.add(Dropout(0.5))
-        model.add(Dense(2))
+        model.add(Dense(6))
         model.add(Activation('sigmoid'))
-        model.compile(optimizer='adam',
-                        loss='binary_crossentropy',
-                        metrics=['accuracy'])
+        model.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
         #model.summary()
         #monitor = EarlyStopping(monitor = 'val_loss', min_delta = 1e-3, patience = 10, verbose =1, mode = 'auto',
         #                      restore_best_weights = True)
-        monitor = EarlyStopping(monitor = 'val_loss', min_delta = 1e-3, patience = 10, verbose =1, mode = 'auto')
-                                
-        model.fit(X_train, y_train, validation_data =(X_test, y_test), callbacks = [monitor], 
-                verbose = 0, epochs =1000 , batch_size = 20)
         
+        print("Model Done")
         return model
 
 
